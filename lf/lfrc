@@ -1,12 +1,13 @@
 # interpreter for shell commands
 set shell sh
-
+set previewer ~/.config/lf/preview
+set preview true
 # "latest modified first"
 set sortby time
 set reverse
 
 set icons
-#set drawbox
+# set drawbox
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10 # leave some space at the top and the bottom of the screen
@@ -50,7 +51,7 @@ for file in "${myfiles[@]}"; do
         text/*|application/json) setsid -f alacritty -e nvim "$file" >/dev/null 2>&1 ;;
         image/*) rotdir.sh "$file" | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | sxiv -aio 2>/dev/null | lfselect.sh & ;;
         video/*) setsid -f mpv "$file" --quiet >/dev/null 2>&1 ;;
-        audio/*) setsid -f alacritty -e mpv --audio-display=no "$file" --quiet >/dev/null 2>&1 ;;
+        audio/*) setsid -f alacritty -e mpv "$file" >/dev/null 2>&1 ;;
         *) setsid -f xdg-open "$file" >/dev/null 2>&1 ;;
     esac
 done
@@ -90,7 +91,9 @@ cmd zip ${{
     rm -rf $1
 }}
 
-
+cmd terminal ${{
+    setsid -f alacritty
+}}
 
 
 
@@ -119,6 +122,7 @@ map a push :aj<space>
 map <c-f> :fzf_jump
 map gs :fzf_search
 map o :open
+map t :terminal
 
 # Movement
 map gd cd ~/Downloads
