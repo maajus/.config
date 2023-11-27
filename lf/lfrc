@@ -1,0 +1,129 @@
+# interpreter for shell commands
+set shell sh
+
+# "latest modified first"
+set sortby time
+set reverse
+
+set icons
+#set drawbox
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10 # leave some space at the top and the bottom of the screen
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
+
+
+
+cmd aj %lf -remote "send $id cd '$(autojump $1 | sed 's/\\/\\\\/g;s/"/\\"/g')'"
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+
+cmd fzf_search ${{
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+    res="$(
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
+    )"
+    [ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+
+cmd open ${{
+readarray -t myfiles < <(printf "%s" "$fx")
+for file in "${myfiles[@]}"; do
+    case $(file --mime-type "$file" -bL) in
+        text/*|application/json) setsid -f alacritty -e nvim "$file" >/dev/null 2>&1 ;;
+        image/*) rotdir.sh "$file" | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | sxiv -aio 2>/dev/null | lfselect.sh & ;;
+        video/*) setsid -f mpv "$file" --quiet >/dev/null 2>&1 ;;
+        audio/*) setsid -f alacritty -e mpv --audio-display=no "$file" --quiet >/dev/null 2>&1 ;;
+        *) setsid -f xdg-open "$file" >/dev/null 2>&1 ;;
+    esac
+done
+lf -remote "send unselect \"${myfiles[@]}\""
+}}
+
+
+# extract the current file with the right command
+# (xkcd link: https://xkcd.com/1168/)
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+# compress current file or selected files with zip
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
+
+
+
+
+
+
+
+
+map R :rename; cmd-end
+map ae extract
+map ac compress
+map md :push %mkdir<space>
+# use enter for shell commands
+map <enter> shell
+# show the result of execution of previous commands
+map ` !true
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+#custom
+map a push :aj<space>
+map <c-f> :fzf_jump
+map gs :fzf_search
+map o :open
+
+# Movement
+map gd cd ~/Downloads
+map gw cd ~/work
+map gi cd ~/work/igo
+
+
+

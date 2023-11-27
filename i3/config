@@ -1,0 +1,294 @@
+# i3 config file (v4)
+
+set $mod Mod4
+set $mod1 Mod1
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+font pango:Neuropolitical 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec termite
+bindsym $mod+minus scratchpad show
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+#keep the cursor inside a container
+force_focus_wrapping yes
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+#bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+KP_1 workspace $ws1
+bindsym $mod+KP_2 workspace $ws2
+bindsym $mod+KP_3 workspace $ws3
+bindsym $mod+KP_4 workspace $ws4
+bindsym $mod+KP_5 workspace $ws5
+bindsym $mod+KP_6 workspace $ws6
+bindsym $mod+KP_7 workspace $ws7
+bindsym $mod+KP_8 workspace $ws8
+bindsym $mod+KP_9 workspace $ws9
+bindsym $mod+KP_0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+Shift+KP_1 move container to workspace $ws1
+bindsym $mod+Shift+KP_2 move container to workspace $ws2
+bindsym $mod+Shift+KP_3 move container to workspace $ws3
+bindsym $mod+Shift+KP_4 move container to workspace $ws4
+bindsym $mod+Shift+KP_5 move container to workspace $ws5
+bindsym $mod+Shift+KP_6 move container to workspace $ws6
+bindsym $mod+Shift+KP_7 move container to workspace $ws7
+bindsym $mod+Shift+KP_8 move container to workspace $ws8
+bindsym $mod+Shift+KP_9 move container to workspace $ws9
+bindsym $mod+Shift+KP_0 move container to workspace $ws10
+
+# move workspace to left and right monitors
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Shift+p move workspace to output primary
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+r mode "resize"
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+# Custom Binds
+bindsym $mod+n exec xdotool getwindowfocus key --window %1 click 2
+bindsym $mod+$mod1+x exec i3lock -d -c 111111
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioMute exec amixer set Master toggle & sleep 2& amixer set Speaker toggle & sleep 2& amixer set Headphone toggle
+bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F8 exec playerctl --player=spotify play-pause
+bindsym $mod+F9 exec playerctl --player=spotify next
+bindsym $mod+F7 exec playerctl --player=spotify previous
+# bindsym $mod+Shift+s --release exec scrot -s ~/Pictures/screenshots/%y%m%d_%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f'
+bindsym $mod+Shift+s --release exec flameshot gui
+
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86Display exec /home/justas/scripts/vga.sh
+
+#bindsym XF86AudioMute exec /home/justas/scripts/xosd_vol mute
+bindsym XF86TouchpadToggle exec trackpad-toggle.sh
+bindsym $mod+Shift+minus move scratchpad
+bindsym XF86WebCam exec /home/justas/scripts/monitor.sh
+
+#bindsym $mod+Tab workspace next
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+grave workspace next
+bindsym $mod+Shift+grave workspace prev
+bindsym $mod+Prior workspace next
+bindsym $mod+Next workspace prev
+#bindsym $mod+Shift+Down workspace prev
+
+#Windows
+new_window pixel 1
+new_float pixel 1
+
+
+#catppuccin colors
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
+
+# target                 title     bg    text   indicator  border
+#client.focused           $lavender $base $text  $rosewater $lavender
+#client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+#client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+#client.urgent            $peach    $base $peach $overlay0  $peach
+#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.background        $base
+
+#class                           border          backgr.         text            indicator
+client.focused                  #353535         #404040         #FABD2F         #ffffff
+client.unfocused                #353535         #282828         #EAEAEA         #ffffff
+client.focused_inactive         #353535         #282828         #EAEAEA         #ffffff
+client.urgent                   #353535         #282828         #ff0000         #ffffff
+
+force_xinerama no
+#hide_edge_borders both
+exec --no-startup-id sh ~/.fehbg
+
+# startup programs
+exec xbindkeys
+exec /home/justas/scripts/lt.sh
+exec setxkbmap -option caps:escape
+exec_always --no-startup-id /home/justas/scripts/launch_polybar.sh
+#exec_always --no-startup-id picom
+
+# start rofi (a program launcher)
+bindsym $mod+F2 exec rofi -show run
+bindsym $mod+x exec rofi -show run
+bindsym Mod1+F2 exec rofi -show run
+bindsym $mod+b exec rofi -show window
+bindsym $mod1+Shift exec /home/justas/scripts/lt.sh
+
+bindsym $mod+m exec smplayer
+bindsym XF86Sleep exec systemctl suspend
+bindsym $mod+P exec thunar
+bindsym XF86TouchpadOn exec synclient TouchpadOff=0
+bindsym XF86TouchpadOff exec synclient TouchpadOff=1
+
+#exports
+exec --no-startup-id export QT_FONT_DPI=96
+exec --no-startup-id export QT_AUTO_SCREEN_SCALE_FACTOR=0
+
+# clipboard tool
+exec --no-startup-id greenclip daemon>/dev/null
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard
+
+#gaps
+#for_window [class="^.*"] border pixel 0
+smart_gaps on
+smart_borders on
+gaps inner 2
+gaps outer -1
+
+
