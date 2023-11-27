@@ -108,11 +108,12 @@ padding-right = 2
 module-margin = 1.5
 
 modules-left = i3
-modules-center = date time
-modules-right = wlan xkeyboard cpu memory temperature volume backlight battery
+modules-center = date time spotify previous playpause next 
+modules-right = wlan xkeyboard cpu memory temperature volume battery
 
 tray-position = right
 tray-padding = 0
+enable-ipc = true
 
 
 ;---------;
@@ -202,34 +203,11 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 
-[module/mpd]
-type = internal/mpd
-
-label-offline = mpd is offline
-format-online = <icon-prev> <toggle> <icon-next> <label-song>
-format-offline = <label-offline>
-host = 127.0.0.1
-port = 6600
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-bar-progress-width = 10
-bar-progress-indicator = |
-bar-progress-fill = ─
-bar-progress-empty = ─
 
 [module/backlight]
 type = internal/backlight
-
-; Use the following command to list available cards:
-; $ ls -1 /sys/class/backlight/
 card = intel_backlight
+use-actual-brightness = true
 
 format = <ramp> <label>
 
@@ -297,3 +275,39 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-underline = ${colors.secondary}
 
+[module/previous]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo ""
+click-left = "spotifyctl -q previous"
+
+
+[module/next]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo ""
+click-left = "spotifyctl -q next"
+
+
+[module/playpause]
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+click-left = "spotifyctl -q playpause"
+
+
+[module/spotify]
+label-padding-left=4
+type = custom/ipc
+; Default
+hook-0 = echo ""
+; Playing/paused show song name and artist
+hook-1 = spotifyctl -q status --format '%artist%: %title%'
