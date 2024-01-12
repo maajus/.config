@@ -118,7 +118,7 @@ map o &mimeopen $f
 map O $mimeopen --ask $f
 
 #custom
-map a push :aj<space>
+map aj push :aj<space>
 map <c-f> :fzf_jump
 map gs :fzf_search
 map o :open
