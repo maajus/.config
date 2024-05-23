@@ -10,9 +10,9 @@
     "gtk-layer-shell": true,
 
 
-	"modules-left": ["custom/left","custom/rofi", "cpu", "memory", "custom/gpu-usage", "temperature","backlight","pulseaudio","battery","custom/right"],
-	"modules-center": ["custom/left","hyprland/workspaces","custom/right"],
-	"modules-right": ["custom/left","tray","clock","custom/right"],
+    "modules-left": ["custom/left","custom/rofi", "cpu", "memory", "temperature","backlight","pulseaudio","battery","custom/right"],
+    "modules-center": ["custom/left","hyprland/workspaces","custom/right"],
+    "modules-right": ["custom/left","tray","network","clock","custom/right"],
 
  
    "network": {
@@ -41,13 +41,13 @@
     },
 
     "cpu": {
-        "interval": 2,
-        "format": "  {}%",
+        "interval": 1,
+        "format": "  {usage}%",
         "max-length": 10
     },
 
     "memory": {
-        "interval": 10,
+        "interval": 5,
         "format": "  {}%",
         "max-length": 10
     },
@@ -69,6 +69,17 @@
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+        }
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
         "persistent_workspaces": {
             "1": [],
             "2": [],
@@ -77,6 +88,7 @@
             "5": []
         }
     },
+
 
     "battery": {
         "states": {
