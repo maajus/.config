@@ -21,6 +21,9 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #network,
+#bluetooth,
+#language,
+#idle_inhibitor,
 #memory,
 #custom-gpu-usage,
 #custom-right,
@@ -54,8 +57,8 @@ tooltip {
 }
 
 #workspaces button.active {
-    background: #DA025D;
-    color: #DDBF98;
+    background: #4dc16f;
+    color: #242424;
     margin-left: 3px;
     padding-left: 12px;
     padding-right: 12px;
@@ -63,6 +66,24 @@ tooltip {
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
+
+#workspaces button.empty {
+    color: #828282;
+}
+
+
+
+#workspaces button.focused {
+    background: #DA025D;
+    color: #DDBF98;
+    margin-left: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 3px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
 
 #workspaces button:hover {
     background: #b16286;
@@ -118,7 +139,7 @@ tooltip {
 
 #network {
    padding-left: 0px;
-   padding-right: 19px;
+   padding-right: 15px;
 }
 
 #cpu {
@@ -157,4 +178,29 @@ tooltip {
     margin-left: 9px;
     padding-left: 3px;
     border-radius: 22px 0px 0px 22px;
+}
+
+
+#bluetooth {
+   padding-left: 0px;
+   padding-right: 15px;
+}
+
+#bluetooth.disabled {
+    color: #828282; 
+}
+
+#bluetooth.connected {
+    color: #DDBF98;
+}
+
+#language {
+    padding-left: 0px;
+    padding-right: 15px;
+}
+
+#idle_inhibitor {
+    color: #FF8B49;
+    padding-left: 15px;
+    padding-right: 15px;
 }
