@@ -67,7 +67,7 @@ tooltip {
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.empty {
+#workspaces button.empty:not(.active) {
     color: #828282;
 }
 
@@ -84,11 +84,11 @@ tooltip {
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-
-#workspaces button:hover {
-    background: #b16286;
-    border: none;
-}
+/**/
+/* #workspaces button:hover { */
+/*     background: #b16286; */
+/*     border: none; */
+/* } */
 
 #workspaces {
     padding: 0px;

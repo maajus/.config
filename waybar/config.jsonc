@@ -4,7 +4,7 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
-    "height": 40,
+    "height": 38,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -57,7 +57,7 @@
 
      "temperature": {
     // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
     // "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C ",
     "format": " {temperatureC}°C"
@@ -71,7 +71,6 @@
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "on-click": "activate",
         "persistent-workspaces": {
             "1": [],
             "2": [],
@@ -168,7 +167,6 @@
     },
 
 // modules for padding //
-
     "custom/left": {
         "format": " ",
         "interval" : "once",
