@@ -166,6 +166,14 @@
         "tooltip": false
     },
 
+    "custom/power-draw":{
+        "exec": "cat /sys/class/power_supply/BAT1/power_now",
+        "format": " {}W",
+        "return-type": "int",
+        "interval": 1,
+        "tooltip": false
+    },
+
 // modules for padding //
     "custom/left": {
         "format": " ",
@@ -190,6 +198,11 @@
             "deactivated": ""
         },
         "timeout": 30.5
-    }
+    },
+
+    "hyprland/window": {  
+        //"format": "{}"   // <--- these is the default value  
+        "format": "<span font='9' rise='-4444'>{}</span>"  
+    },
 
 }

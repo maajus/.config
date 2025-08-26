@@ -1,5 +1,19 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "Ape/mediainfo"
+rev = "c69314e"
+hash = "edbf9c7a6a69c8c09b53f860fd887f5c"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "2ae0668" }]
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "0e2ae47"
+hash = "6656f2869ae2274a0e1860876f15186f"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "2ae0668"
+hash = "228f8191fd4f8dbfcf70f9f87073718e"
