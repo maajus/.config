@@ -1,3 +1,9 @@
+@define-color main_color #FFFFFF;
+/* @define-color border_color #CBA6F7; */
+/* @define-color border_color #72A7BC; */
+@define-color border_color #595959; 
+
+
 * {
     border: none;
     border-radius: 0px;
@@ -10,6 +16,7 @@
 window#waybar {
     background-color: rgba(0, 0, 0, .0);
 }
+
 
 #cpu,
 #battery,
@@ -28,11 +35,12 @@ window#waybar {
 #custom-gpu-usage,
 #custom-right,
 #custom-left {
-   color: @main-color;
+   color: @main_color;
    background: #242424;
    margin: 4px 0px 4px 0px;
-   opacity: 1;
-   border: 0px solid #181825;
+   /* opacity: 1; */
+   border-top: 2px solid @border_color;
+   border-bottom: 2px solid @border_color;
 }
 
 tooltip {
@@ -51,13 +59,13 @@ tooltip {
     margin-bottom: 3px;
     padding-left: 0px;
     padding-right: 0px;
-    color: #ffffff;
+    color: @main_color; 
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.active {
-    background: #4dc16f;
+    background: #8EC07C;
     color: #242424;
     margin-left: 0px;
     padding-left: 8px;
@@ -92,8 +100,8 @@ tooltip {
 
 #workspaces {
     padding: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 #custom-rofi {
@@ -103,7 +111,7 @@ tooltip {
 }
 
 #temperature {
-    color: #eebd35;
+    color: #EEBD35;
     padding-left: 0px;
     padding-right: 19px;
 }
@@ -127,7 +135,7 @@ tooltip {
 }
 
 #battery {
-    color: #458588;
+    color: #76946A;
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -143,19 +151,19 @@ tooltip {
 }
 
 #cpu {
-   color: #80BCBD;
+   color: #74C7EC;
    padding-left: 0px;
    padding-right: 19px;
 }
 
 #memory {
-   color:#8E7AB5;
+   color:#CBA6F7;
    padding-left: 0px;
    padding-right: 19px;
 }
 
 #custom-gpu-usage {
-   color: #80BCBD;
+   color: #74C7EC;
    padding-left: 0px;
    padding-right: 19px;
 }
@@ -170,20 +178,23 @@ tooltip {
 
 #custom-right {
     margin-right: 9px;
-    padding-right: 3px;
+    padding-right: 9px;
     border-radius: 0px 22px 22px 0px;
+    border-right: 2px solid @border_color;
 }
 
 #custom-left {
     margin-left: 9px;
-    padding-left: 3px;
+    padding-left: 9px;
     border-radius: 22px 0px 0px 22px;
+    border-left: 2px solid @border_color;
 }
 
 
 #bluetooth {
    padding-left: 0px;
    padding-right: 15px;
+   color: #74C7EC;
 }
 
 #bluetooth.disabled {

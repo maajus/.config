@@ -10,7 +10,7 @@
     "gtk-layer-shell": true,
 
 
-    "modules-left": ["custom/left", "cpu", "memory", "temperature","pulseaudio","battery","idle_inhibitor","custom/right"],
+    "modules-left": ["custom/left", "cpu", "memory", "temperature","pulseaudio","battery","custom/right"],
     "modules-center": ["custom/left","hyprland/workspaces","custom/right"],
     "modules-right": ["custom/left","tray","bluetooth","network","hyprland/language","clock","custom/right"],
 
@@ -19,7 +19,7 @@
         "tooltip": true,
 
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+        "format-ethernet": "󰈀 {ipaddr}/{cidr}",
         // "format-wifi": "<span foreground='#FF8B49'> {bandwidthDownBytes}</span> <span foreground='#FF6962'> {bandwidthUpBytes}</span>",
         // "format-ethernet": "<span foreground='#FF8B49'> {bandwidthDownBytes}</span> <span foreground='#FF6962'> {bandwidthUpBytes}</span>",
         "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
@@ -45,7 +45,7 @@
 
     "cpu": {
         "interval": 1,
-        "format": "  {usage}%",
+        "format": " {usage}%",
         "max-length": 10
     },
 
@@ -133,13 +133,13 @@
 
 
     "tray": {
-      "icon-size": 20,
-        "spacing": 9
+      "icon-size": 18,
+        "spacing": 8
     },
 
 
     "clock": {
-        "format": " {:%m-%d  %H:%M}",
+        "format": " {:%d %H:%M}",
         "tooltip": true,
         "tooltip-format": "{:%Y-%m-%d  %H:%M}",
     },
