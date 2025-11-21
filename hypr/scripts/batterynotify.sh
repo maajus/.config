@@ -18,8 +18,8 @@ is_laptop() {
 if is_laptop; then
 
 while true; do
-    battery_status=$(cat /sys/class/power_supply/BAT0/status)
-    battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+    battery_status=$(cat /sys/class/power_supply/BAT1/status)
+    battery_percentage=$(cat /sys/class/power_supply/BAT1/capacity)
 
     if [ "$battery_status" == "Discharging" ] && [ "$battery_percentage" -le 20 ]; then
         dunstify -u CRITICAL "Battery Low" "Battery is at $battery_percentage%. Connect the charger."
