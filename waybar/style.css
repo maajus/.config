@@ -65,7 +65,8 @@ tooltip {
 }
 
 #workspaces button.active {
-    background: #8EC07C;
+    /* background: #8EC07C; */
+    background: #CBA6F7;
     color: #242424;
     margin-left: 0px;
     padding-left: 8px;

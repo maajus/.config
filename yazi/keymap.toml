@@ -8,7 +8,8 @@ run = [ '''
 # Open kitty terminal in a new window
 [[mgr.prepend_keymap]]
 on   = ["T"] # The key
-run  = "shell 'kitty' --block=false --orphan=true" # Command to execute
+# run  = "shell 'kitty' --block=false --orphan=true" # Command to execute
+run  = "shell -- kitty --dir \"$PWD\""
 desc = "Open Kitty terminal in new window"
 
 [[mgr.prepend_keymap]]
@@ -50,3 +51,18 @@ desc = "Archive selected files (compression level)"
 on   = [ "c", "a", "u" ]
 run  = "plugin compress -phl"
 desc = "Archive selected files (password+header+level)"
+
+[[mgr.prepend_keymap]]
+on   = "M"
+run  = "plugin mount"
+desc = "Open mount manager"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd /run/media/justas"
+desc = "Go to mounted drives"
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-w>" ]
+run = "close"
+desc = "Close the current tab"

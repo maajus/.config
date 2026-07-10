@@ -12,7 +12,7 @@
 
     "modules-left": ["custom/left", "cpu", "memory", "temperature","pulseaudio","battery","custom/right"],
     "modules-center": ["custom/left","hyprland/workspaces","custom/right"],
-    "modules-right": ["custom/left","tray","bluetooth","network","hyprland/language","clock","custom/right"],
+    "modules-right": ["custom/left","tray","bluetooth","hyprland/language","clock","custom/right"],
 
  
    "network": {

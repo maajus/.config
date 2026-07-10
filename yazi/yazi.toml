@@ -48,8 +48,12 @@ open = [
 
 [open]
 prepend_rules = [
-	{ name = "*.json", use = "edit" },
-	{ name = "*.patch", use = "edit" },
+    { url = "*.json", use = "edit" },
+    { url = "*.patch", use = "edit" },
+    { url = "*.bin", use = "edit" },
+    { url = "*.toml", use = "edit" },
+    { url = "*.yaml", use = "edit" },
+    { url = "*.bb", use = "edit" },
 ]
 
 [commands.open_terminal]
