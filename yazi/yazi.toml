@@ -36,14 +36,17 @@ prepend_previewers = [
 
 [opener]
 play = [
-    { run = 'kitty -e mpv "$@"', orphan = true, for = "unix", desc = "Play" },
-    { run = 'vlc "$@"', orphan = true, for = "unix", desc = "Play vlc" },
+    { run = 'kitty -e mpv %s', orphan = true, for = "unix", desc = "Play" },
+    { run = 'vlc %s', orphan = true, for = "unix", desc = "Play vlc" },
 ]
 edit = [
-    { run = '$EDITOR "$@"', block = true, for = "unix" },
+    { run = '$EDITOR %s', block = true, for = "unix" },
 ]
 open = [
-    { run = 'xdg-open "$@"', desc = "Open" },
+    { run = 'xdg-open %s', desc = "Open" },
+]
+execute = [
+    { run = 'kitty -e %s', orphan = true, desc = "Execute" },
 ]
 
 [open]
@@ -54,6 +57,9 @@ prepend_rules = [
     { url = "*.toml", use = "edit" },
     { url = "*.yaml", use = "edit" },
     { url = "*.bb", use = "edit" },
+    { mime = "application/x-executable", use = "execute" },
+    { mime = "application/x-pie-executable", use = "execute" },
+    { mime = "application/x-sharedlib", use = ["execute", "open"] },
 ]
 
 [commands.open_terminal]
