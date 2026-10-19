@@ -1,17 +1,7 @@
 [[plugin.deps]]
-use = "Ape/mediainfo"
-rev = "c69314e"
-hash = "edbf9c7a6a69c8c09b53f860fd887f5c"
-
-[[plugin.deps]]
 use = "ndtoan96/ouch"
 rev = "0742fff"
 hash = "2bd799b42b8e42b8ef100310be71f8d1"
-
-[[plugin.deps]]
-use = "boydaihungst/mediainfo"
-rev = "0e2ae47"
-hash = "6656f2869ae2274a0e1860876f15186f"
 
 [[plugin.deps]]
 use = "Ape/open-with-cmd"
@@ -22,6 +12,11 @@ hash = "86e0312b01bc5762813c6c1d0517f073"
 use = "yazi-rs/plugins:mount"
 rev = "230b9c6"
 hash = "9ad20d763df07ce40fd09de549d914b0"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "f1cec0b"
+hash = "fd9312e974c63438b1f8737711462d52"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:catppuccin-mocha"
